@@ -1,5 +1,6 @@
 package com.example.naxgym
 
+// This imports the things we need for the code to work
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -23,7 +24,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
+import androidx.compose.ui.platform.testTag
+// In this Code it shows the main code of my app //
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +37,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// In this line of Code it shows on what screen you are currently on the first page or on the second page
+// Also when you click on the image it would take you to the second page
 @Composable
 fun NaxGymApp() {
 
@@ -59,7 +63,8 @@ fun NaxGymApp() {
         )
     }
 }
-
+// This code is the main menu the first page it has code for tha background, and it says you need to click the dumbbell image to proceed
+// The code also has the code for the background color with the sizes of the texts
 @Composable
 fun HomeScreen(onImageClick: () -> Unit) {
 
@@ -93,11 +98,10 @@ fun HomeScreen(onImageClick: () -> Unit) {
             painter = painterResource(
                 id = R.drawable.dumbbells_clipart_gym_machine_dumbbell_gym_art
             ),
-
             contentDescription = "Dumbbell",
-
             modifier = Modifier
                 .size(220.dp)
+                .testTag("dumbbellImage")
                 .clickable {
                     onImageClick()
                 }
@@ -105,6 +109,9 @@ fun HomeScreen(onImageClick: () -> Unit) {
     }
 }
 
+//This is the code for the second page of my app
+// This code adds the columns and rows
+// This code also adds a bar graph image
 @Composable
 fun OverviewScreen(onHomeClick: () -> Unit) {
 
@@ -180,6 +187,8 @@ fun OverviewScreen(onHomeClick: () -> Unit) {
     }
 }
 
+// Displays a statistic with a title and the corresponding values
+
 @Composable
 fun StatText(title: String, value: String) {
 
@@ -198,6 +207,9 @@ fun StatText(title: String, value: String) {
         Spacer(modifier = Modifier.height(10.dp))
     }
 }
+
+// Creates the bottom navigation bar that displays the app's navigation buttons.
+// The Home button returns the user to the home screen.
 
 @Composable
 fun BottomNavigationBar(onHomeClick: () -> Unit) {
@@ -241,6 +253,9 @@ fun BottomNavigationBar(onHomeClick: () -> Unit) {
         )
     }
 }
+// Creates a reusable navigation item consisting of an icon and a text label.
+// Displays the navigation icon and label below the icon
+// it works when you just tap each of the icons
 
 @Composable
 fun BottomItem(
